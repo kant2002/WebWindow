@@ -34,7 +34,7 @@ jobs:
       displayName: 'Use .NET Core sdk'
       inputs:
         packageType: sdk
-        version: 3.0.100
+        version: 3.1.301
         installationPath: $(Agent.ToolsDirectory)/dotnet
     - task: CmdLine@2
       displayName: 'Install linux dependencies'
@@ -125,11 +125,11 @@ jobs:
       inputs:
         downloadPath: 'artifacts'
         artifactName: 'artifacts-combined'
-    - task: NuGetCommand@2
-      displayName: 'Publish to nuget.org'
-      condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
-      inputs:
-        command: push
-        packagesToPush: 'artifacts/artifacts-combined/*.nupkg'
-        nuGetFeedType: external
-        publishFeedCredentials: 'WebWindowNuGet'
+    #- task: NuGetCommand@2
+    #  displayName: 'Publish to nuget.org'
+    #  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+    #  inputs:
+    #    command: push
+    #    packagesToPush: 'artifacts/artifacts-combined/*.nupkg'
+    #    nuGetFeedType: external
+    #    publishFeedCredentials: 'WebWindowNuGet'
